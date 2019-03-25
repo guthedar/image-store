@@ -1,0 +1,45 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.18.0 (06a2e56)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: mysql-docker-container
+  name: mysql-docker-container
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: mysql-docker-container
+    spec:
+      containers:
+      - args:
+        - mysqld
+        - --default-authentication-plugin=mysql_native_password
+        env:
+        - name: MYSQL_DATABASE
+          value: file_demo
+        - name: MYSQL_PASSWORD
+          value: root
+        - name: MYSQL_ROOT_PASSWORD
+          value: root
+        - name: MYSQL_USER
+          value: root
+        image: guthedar/mysql:latest
+        name: mysql-docker-container
+        resources: {}
+        volumeMounts:
+        - mountPath: /data/mysql
+          name: mysql-docker-container-claim0
+      restartPolicy: Always
+      volumes:
+      - name: mysql-docker-container-claim0
+        persistentVolumeClaim:
+          claimName: mysql-docker-container-claim0
+status: {}
