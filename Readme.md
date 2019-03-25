@@ -22,11 +22,11 @@ Prerequisites
 
 Image store implementation details:
 
-		 This is a very tradition approach.The Image store application is created using production ready sprint-boot framework. For UI purpose I have used html,css, javascript, jquery and ajax. And I have used MySql database. Here I have created two tables, one for storing images and other for storing notifications. I have used Rest end points for CRUD operations. And data will be retained even after restart as I am using Persist Volume and Persist Volume Claims.
-				I created docker-compose.yml file and then used Kompose(Kubernetes+Compose) to generate kubernetes deployable service and deploment yaml files.
-				Therefore  we need to create following containers in the process of running application for the kubernetes platform.
-								A Container for running the Spring Boot Application (developed application docker image)
-								A Container for running the MySQL Server (mysql docker image)
+	This is a very tradition approach.The Image store application is created using production ready sprint-boot framework. For UI purpose I have used html,css, javascript, jquery and ajax. And I have used MySql database. Here I have created two tables, one for storing images and other for storing notifications. I have used Rest end points for CRUD operations. And data will be retained even after restart as I am using Persist Volume and Persist Volume Claims.
+	I created docker-compose.yml file and then used Kompose(Kubernetes+Compose) to generate kubernetes deployable service and deploment yaml files.
+	Therefore  we need to create following containers in the process of running application for the kubernetes platform.
+			A Container for running the Spring Boot Application (developed application docker image)
+			A Container for running the MySQL Server (mysql docker image)
 				
 				
 				
@@ -58,3 +58,4 @@ How to use application:
 				
 				- After every operation takes place, a notification bar pops up and tells what operation has been performed.
 				- And all the operation history is show in the adjacent table. Admin will see history of all the users and other users will see only their history.
+				
